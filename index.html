@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple E-Commerce</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>My Shop</h1>
+    <div class="cart">
+      🛒 Cart: <span id="cart-count">0</span>
+    </div>
+  </header>
+
+  <!-- Filters -->
+  <section class="filters">
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+      <option value="electronics">Electronics</option>
+      <option value="fashion">Fashion</option>
+    </select>
+
+    <select id="priceSort">
+      <option value="default">Sort by Price</option>
+      <option value="low-high">Low → High</option>
+      <option value="high-low">High → Low</option>
+    </select>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="products" id="productGrid">
+    <!-- Products injected by JS -->
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

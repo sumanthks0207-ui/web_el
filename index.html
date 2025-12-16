@@ -8,7 +8,7 @@
 <body>
 
   <header>
-    <h1>Zenith E-Shopping</h1>
+    <h1>Sumanth E-Shopping</h1>
     <div class="cart-container">
   <button id="cart-btn">
     🛒 Cart: <span id="cart-count">0</span>
@@ -29,20 +29,27 @@
   </header>
 
   <!-- Filters -->
-  <section class="filters">
+ <section class="filters">
+  <div class="filter-group">
+    <label for="categoryFilter">Category</label>
     <select id="categoryFilter">
-      <option value="all">All Categories</option>
+      <option value="all">All</option>
       <option value="electronics">Electronics</option>
       <option value="fashion">Fashion</option>
       <option value="home">Home</option>
     </select>
+  </div>
 
+  <div class="filter-group">
+    <label for="priceSort">Sort by Price</label>
     <select id="priceSort">
-      <option value="default">Sort by Price</option>
+      <option value="default">Default</option>
       <option value="low-high">Low → High</option>
       <option value="high-low">High → Low</option>
     </select>
-  </section>
+  </div>
+</section>
+
 
   <!-- Product Grid -->
   <section class="products" id="productGrid">
@@ -51,15 +58,6 @@
 
   <script src="script.js"></script>
 </body>
-<div id="category-overlay">
-  <div class="category-box">
-    <h2>Select a Category</h2>
 
-    <button onclick="selectCategory('electronics')">Electronics</button>
-    <button onclick="selectCategory('fashion')">Fashion</button>
-    <button onclick="selectCategory('home')">Home</button>
-    <button onclick="selectCategory('all')">Show All</button>
-  </div>
-</div>
 
 </html>

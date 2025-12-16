@@ -29,7 +29,7 @@ cartBtn.addEventListener("click", () => {
 
 /* Render products */
 function selectCategory(category) {
-  const overlay = document.getElementById("category-overlay");
+  
   const productGrid = document.getElementById("productGrid");
 
   // hide overlay

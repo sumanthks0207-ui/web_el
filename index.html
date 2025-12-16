@@ -9,9 +9,18 @@
 
   <header>
     <h1>My Shop</h1>
-    <div class="cart">
-      🛒 Cart: <span id="cart-count">0</span>
-    </div>
+    <div class="cart-container">
+  <button id="cart-btn">
+    🛒 Cart: <span id="cart-count">0</span>
+  </button>
+
+  <div id="cart-dropdown" class="cart-dropdown hidden">
+    <h4>Cart Items</h4>
+    <div id="cart-items"></div>
+    <p id="cart-empty">Cart is empty</p>
+  </div>
+</div>
+
   </header>
 
   <!-- Filters -->

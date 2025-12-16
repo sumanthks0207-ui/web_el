@@ -10,12 +10,21 @@ const products = [
   { id: 9, name: "Desk Lamp", price: 30, category: "home", image: "https://via.placeholder.com/200" }
 ];
 
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productGrid = document.getElementById("productGrid");
 const categoryFilter = document.getElementById("categoryFilter");
 const priceSort = document.getElementById("priceSort");
 const cartCount = document.getElementById("cart-count");
+const cartBtn = document.getElementById("cart-btn");
+const cartDropdown = document.getElementById("cart-dropdown");
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cartBtn.addEventListener("click", () => {
+  cartDropdown.classList.toggle("hidden");
+});
+
+
+
 
 /* Render products */
 function displayProducts(list) {
@@ -35,30 +44,65 @@ function displayProducts(list) {
 }
 
 /* Add to cart */
-function addToCart(id) {
-  const existingItem = cart.find(item => item.id === productId);
+function addToCart(productId) {
+  const item = cart.find(i => i.id === productId);
 
-  if (existingItem) {
-    existingItem.quantity += 1;
+  if (item) {
+    item.quantity++;
   } else {
     cart.push({ id: productId, quantity: 1 });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
+  renderCartItems();
 }
 
 /* Update cart count */
 function updateCartCount() {
- const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = totalItems;
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cart-count").textContent = count;
 }
+
 function removeFromCart(productId) {
   cart = cart.filter(item => item.id !== productId);
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 }
+function renderCartItems() {
+  const cartItemsDiv = document.getElementById("cart-items");
+  const emptyText = document.getElementById("cart-empty");
 
+  cartItemsDiv.innerHTML = "";
+
+  if (cart.length === 0) {
+    emptyText.style.display = "block";
+    return;
+  }
+
+  emptyText.style.display = "none";
+
+  cart.forEach(cartItem => {
+    const product = products.find(p => p.id === cartItem.id);
+    if (!product) return;
+
+    const div = document.createElement("div");
+    div.className = "cart-item";
+
+    div.innerHTML = `
+      <span>${product.name} (${cartItem.quantity})</span>
+      <button onclick="removeFromCart(${cartItem.id})">✕</button>
+    `;
+
+    cartItemsDiv.appendChild(div);
+  });
+}
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  renderCartItems();
+}
 /* Filters */
 function applyFilters() {
   let filtered = [...products];
@@ -83,3 +127,4 @@ priceSort.addEventListener("change", applyFilters);
 /* Initial load */
 displayProducts(products);
 updateCartCount();
+renderCartItems();

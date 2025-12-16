@@ -61,3 +61,47 @@ header {
 .product button:hover {
   background: #0056b3;
 }
+.cart-container {
+  position: relative;
+}
+
+#cart-btn {
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cart-dropdown {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  color: black;
+  width: 280px;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.cart-dropdown.hidden {
+  display: none;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.cart-item button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 2px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+}

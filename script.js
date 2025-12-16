@@ -1,8 +1,13 @@
 const products = [
   { id: 1, name: "Phone", price: 500, category: "electronics", image: "https://via.placeholder.com/200" },
   { id: 2, name: "Laptop", price: 900, category: "electronics", image: "https://via.placeholder.com/200" },
-  { id: 3, name: "T-Shirt", price: 25, category: "fashion", image: "https://via.placeholder.com/200" },
-  { id: 4, name: "Shoes", price: 80, category: "fashion", image: "https://via.placeholder.com/200" }
+  { id: 3, name: "Headphones", price: 150, category: "electronics", image: "https://via.placeholder.com/200" },
+  { id: 4, name: "T-Shirt", price: 25, category: "fashion", image: "https://via.placeholder.com/200" },
+  { id: 5, name: "Shoes", price: 80, category: "fashion", image: "https://via.placeholder.com/200" },
+  { id: 6, name: "Jeans", price: 60, category: "fashion", image: "https://via.placeholder.com/200"},
+  { id: 7, name: "Blue Curtain", price: 45, category: "home", image: "https://via.placeholder.com/200" },
+  { id: 8, name: "Chair", price: 120, category: "home", image: "https://via.placeholder.com/200" },
+  { id: 9, name: "Desk Lamp", price: 30, category: "home", image: "https://via.placeholder.com/200" }
 ];
 
 const productGrid = document.getElementById("productGrid");
@@ -31,14 +36,27 @@ function displayProducts(list) {
 
 /* Add to cart */
 function addToCart(id) {
-  cart.push(id);
+  const existingItem = cart.find(item => item.id === productId);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ id: productId, quantity: 1 });
+  }
+
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 }
 
 /* Update cart count */
 function updateCartCount() {
-  cartCount.textContent = cart.length;
+ const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalItems;
+}
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
 }
 
 /* Filters */

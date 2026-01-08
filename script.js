@@ -1,14 +1,44 @@
+const loggedUser = localStorage.getItem("loggedInUser");
+
+if (!loggedUser) {
+  window.location.href = "login.html";
+}
+
+
 const products = [
   { id: 1, name: "Phone", price: 49990, category: "electronics", image: "images/iPhone_15_Pink_Pure_Back_iPhone_15_Pink_Pure_Front_2up_Screen__WWEN_cfd96ace-df87-4ab3-a96a-e8e9b13bb7b9_800x.jpg.webp" },
   { id: 2, name: "Laptop", price: 89990, category: "electronics", image: "images/FUi2wwNdyFSwShZZ7LaqWf.jpg" },
   { id: 3, name: "Headphones", price: 2490, category: "electronics", image: "images/headphones_images.jpeg" },
   { id: 4, name: "T-Shirt", price: 590, category: "fashion", image: "images/tshirt -images.jpeg" },
-  { id: 5, name: "Shoes", price: 1900, category: "fashion", image: "images/images.jpeg" },
-  { id: 6, name: "Jeans", price: 2900, category: "fashion", image: "images/jeans_images.jpeg"},
+  { id: 5, name: "Shoes", price: 1990, category: "fashion", image: "images/images.jpeg" },
+  { id: 6, name: "Jeans", price: 2990, category: "fashion", image: "images/jeans_images.jpeg"},
   { id: 7, name: "Blue Curtain", price: 2690, category: "home", image: "images/curtain_images.jpeg" },
   { id: 8, name: "Chair", price: 4990, category: "home", image: "images/chair_images.jpeg" },
   { id: 9, name: "Desk Lamp", price: 390, category: "home", image: "images/nordic-style-metal-desk-lamp-modern-minimalist-lamp-with-solid-original-imahdg483aav5nrh.jpeg.webp" }
 ];
+localStorage.setItem("products", JSON.stringify(products));
+
+const accountBtn = document.getElementById("account-btn");
+const accountDropdown = document.getElementById("account-dropdown");
+const accountEmail = document.getElementById("account-email");
+
+// Always hide dropdown on load
+accountDropdown.classList.add("hidden");
+
+// Show email
+accountEmail.textContent = loggedUser;
+
+// Toggle dropdown
+accountBtn.addEventListener("click", () => {
+  accountDropdown.classList.toggle("hidden");
+});
+
+
+// Show logged in user
+
+if (loggedUser) {
+  accountEmail.textContent = loggedUser;
+}
 
 let selectedCategory = null;
 
@@ -164,6 +194,15 @@ function applyFilters() {
 
   displayProducts(filtered);
 }
+function goToCheckout() {
+  window.location.href = "checkout.html";
+}
+
+function logout() {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "login.html";
+}
+
 
 /* Event listeners */
 categoryFilter.addEventListener("change", applyFilters);
@@ -174,4 +213,3 @@ displayProducts(products);
 updateCartCount();
 renderCartItems();
 calculateCartTotal();
-localStorage.removeItem("cart");

@@ -37,6 +37,19 @@ cart.forEach(item => {
 
   checkoutItems.appendChild(div);
 });
+function confirmOrder() {
+  const message = document.getElementById("order-message");
+
+  // show message
+  message.classList.remove("hidden");
+
+  // clear cart
+  localStorage.removeItem("cart");
+
+  // optional: disable button
+  document.querySelector(".confirm-btn").disabled = true;
+}
+
 
 
 checkoutTotal.textContent = formatPrice(total);

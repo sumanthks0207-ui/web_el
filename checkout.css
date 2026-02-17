@@ -113,3 +113,13 @@
   text-align: right;
   font-weight: 600;
 }
+.order-message {
+  margin-top: 15px;
+  color: #28a745;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

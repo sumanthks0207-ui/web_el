@@ -38,17 +38,37 @@ cart.forEach(item => {
   checkoutItems.appendChild(div);
 });
 function confirmOrder() {
-  const message = document.getElementById("order-message");
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const user = localStorage.getItem("loggedInUser");
 
-  // show message
-  message.classList.remove("hidden");
+  if (cart.length === 0) {
+    alert("Cart is empty!");
+    return;
+  }
 
-  // clear cart
+  const newOrder = {
+    orderId: Date.now(),   // unique ID
+    user: user,
+    items: cart,
+    total: total,
+    date: new Date().toLocaleString()
+  };
+
+  // Add to orders array
+  orders.push(newOrder);
+
+  // Save updated orders back to localStorage
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  // Clear cart
   localStorage.removeItem("cart");
 
-  // optional: disable button
-  document.querySelector(".confirm-btn").disabled = true;
+  alert("Order Confirmed!");
+
+  window.location.href = "index.html";
 }
+
 
 
 

@@ -1,1 +1,1 @@
-# rebel
+This was just for my college EL project nothing special just a simple e commerce website

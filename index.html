@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple E-Commerce</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Sumanth E-Shopping</h1>
+
+  <div class="header-right">
+
+   <div class="account-container">
+    <button id="account-btn">Account ⌄</button>
+
+    
+
+      <div id="account-dropdown" class="account-dropdown hidden">
+        <p id="account-email"></p>
+        <hr>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+      </div>
+    </div>
+
+    <div class="cart-container">
+      <button id="cart-btn">
+        🛒 Cart: <span id="cart-count">0</span>
+      </button>
+
+      <div id="cart-dropdown" class="cart-dropdown hidden">
+        <h4>Cart Items</h4>
+        <div id="cart-items"></div>
+        <p id="cart-empty">Cart is empty</p>
+        <hr>
+        <p class="cart-total">
+          Total: <span id="cart-total">0</span>
+        </p>
+        <button class="checkout-btn" onclick="goToCheckout()">
+  Proceed to Buy
+</button>
+
+      </div>
+    </div>
+
+  </div>
+
+  </header>
+
+  <!-- Filters -->
+ <section class="filters">
+  <div class="filter-group">
+    <label for="categoryFilter">Category</label>
+    <select id="categoryFilter">
+      <option value="all">All</option>
+      <option value="electronics">Electronics</option>
+      <option value="fashion">Fashion</option>
+      <option value="home">Home</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="priceSort">Sort by Price</label>
+    <select id="priceSort">
+      <option value="default">Default</option>
+      <option value="low-high">Low → High</option>
+      <option value="high-low">High → Low</option>
+    </select>
+  </div>
+</section>
+
+
+  <!-- Product Grid -->
+  <section class="products" id="productGrid">
+    <!-- Products injected by JS -->
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+
+</html>

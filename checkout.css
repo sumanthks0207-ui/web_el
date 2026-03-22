@@ -1,0 +1,125 @@
+/* Checkout Page */
+.checkout-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #dbeafe, transparent 60%),
+    radial-gradient(circle at bottom right, #fce7f3, transparent 60%),
+    linear-gradient(120deg, #f8fafc, #eef2ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  width: 620px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.checkout-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.checkout-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 14px;
+  border-radius: 12px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.checkout-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+
+.checkout-total {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.confirm-btn {
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(99,102,241,0.4);
+}
+
+
+.confirm-btn:hover {
+  background: #218838;
+}
+
+/* Proceed to buy button */
+.checkout-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ffc107;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background: #e0a800;
+}
+.checkout-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px 5px;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+}
+
+.checkout-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 12px 5px;
+  align-items: center;
+}
+
+.checkout-row .qty {
+  text-align: center;
+}
+
+.checkout-row .price {
+  text-align: right;
+  font-weight: 600;
+}
+.order-message {
+  margin-top: 15px;
+  color: #28a745;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
